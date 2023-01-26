@@ -1,17 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
-import Registration from './routes/registration';
-import Verification from './routes/verification';
+import "bootstrap/dist/css/bootstrap.min.css";
+import AuthUser from './components/AuthUser';
+import Guest from './navbar/guest';
+import Auth from './navbar/auth';
 
 function App() {
+  const {getToken} = AuthUser();
+  if(!getToken()){
+    return <Guest />
+  }
   return (
-    <div className="App">
-        <div className='row'>
-        <Registration />
-        <Verification />
-        
-      </div>
-    </div>
+      <Auth />
   );
 }
 
